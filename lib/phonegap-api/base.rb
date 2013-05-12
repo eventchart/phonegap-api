@@ -3,7 +3,7 @@ module Phonegap
   class APIError < StandardError ; end
   
   class Connection
-    include HTTParty
+    include HTTMultiParty
     base_uri 'https://build.phonegap.com/api/v1'
     follow_redirects false
     format :json

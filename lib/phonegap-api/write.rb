@@ -4,6 +4,10 @@ module Phonegap
     def create_app(params)
       self.post("/apps", params)
     end
+
+    def upload_app(params)
+      self.put("/apps", params)
+    end
     
     def delete_app(app_id)
       self.delete("/apps/#{app_id}")

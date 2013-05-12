@@ -61,6 +61,12 @@ describe "Phonegap API operations" do
     it "creates an app" do
       @app_id = @conn.create_app(:title => 'API test app', :repo => 'https://github.com/alunny/phonegap-start.git', :create_method => 'remote_repo')['id']
     end
+
+    it "creates an app with file upload" do
+      f = File.open("README.rdoc", "rb")
+      file_content = Base64.b64encode(f.read())
+      @app_id = @conn.upload_app(:title => 'API test app', :archive => file_content, :create_method => 'file')['id']
+    end
     
     it "deletes the created app" do
       @conn.delete_app(@app_id)
